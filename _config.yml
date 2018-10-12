@@ -26,6 +26,7 @@ exclude:
 google_analytics:
 hashtag: なんちゃラジオ
 itunes_podcast_url: https://itunes.apple.com/jp/podcast/id1333086389
+spotify_podcast_url: https://open.spotify.com/show/7nD0bOrJS48FAh8tjDmaBm
 keywords: idol
 language: ja
 markdown: kramdown

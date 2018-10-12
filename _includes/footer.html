@@ -31,11 +31,16 @@
             新しいエピソードの配信を購読できます。
           </div>
           <ul>
-            {% if site.itunes_podcast_url %}
+              {% if site.itunes_podcast_url %}
               <li>
-                <a href="{{ site.itunes_podcast_url }}" target="_blank">iTunesで購読</a>
+                  <a href="{{ site.itunes_podcast_url }}" target="_blank">iTunesで購読</a>
               </li>
-            {% endif %}
+              {% endif %}
+              {% if site.spotify_podcast_url %}
+              <li>
+                  <a href="{{ site.spotify_podcast_url }}" target="_blank">Spotifyで購読</a>
+              </li>
+              {% endif %}
             <li>
               <a href="http://subscribeonandroid.com/{{ site.og_url | remove: "https://" | remove: "http://" }}/feed.xml" target="_blank">Androidで購読</a>
             </li>
