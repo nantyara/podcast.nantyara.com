@@ -11,6 +11,10 @@ actors:
     image_url: /images/actors/qtaro.jpg
     name: Ｑ太郎
     url: https://twitter.com/nantyaraidol
+  alexa:
+    image_url: /images/actors/alexa.jpg
+    name: Alexa
+    url: https://twitter.com/amazonecho
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
