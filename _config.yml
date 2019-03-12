@@ -15,6 +15,10 @@ actors:
     image_url: /images/actors/alexa.jpg
     name: Alexa
     url: https://twitter.com/amazonecho
+  rotten:
+    image_url: /images/actors/rotten.jpg
+    name: ロットン瑠唯
+    url: https://twitter.com/rotten_rui
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
