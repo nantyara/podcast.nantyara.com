@@ -19,6 +19,10 @@ actors:
     image_url: /images/actors/rotten.jpg
     name: ロットン瑠唯
     url: https://twitter.com/rotten_rui
+  himeeeno:
+    image_url: /images/actors/himeeeno.jpg
+    name: 姫乃たま
+    url: https://twitter.com/Himeeeno
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
