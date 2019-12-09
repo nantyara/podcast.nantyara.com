@@ -23,6 +23,10 @@ actors:
     image_url: /images/actors/himeeeno.jpg
     name: 姫乃たま
     url: https://twitter.com/Himeeeno
+  k_genda:
+    image_url: /images/actors/k_genda.jpg
+    name: 源田和樹
+    url: https://twitter.com/K_Genda
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
