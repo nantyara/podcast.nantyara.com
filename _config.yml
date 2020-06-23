@@ -31,6 +31,10 @@ actors:
     image_url: /images/actors/1ssiki2sssiki34.jpg
     name: 一色進
     url: https://twitter.com/1ssiki2sssiki34
+  haruka:
+    image_url: /images/actors/haruka.jpg
+    name: DJタマキ
+    url: https://twitter.com/tamakinodj
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
