@@ -35,6 +35,14 @@ actors:
     image_url: /images/actors/haruka.jpg
     name: DJタマキ
     url: https://twitter.com/tamakinodj
+  uerin02142:
+    image_url: /images/actors/uerin02142.jpg
+    name: うえりん
+    url: https://twitter.com/uerin02142
+  pinkosyou_a:
+    image_url: /images/actors/pinkosyou_a.jpg
+    name: ぴんく和尚
+    url: https://twitter.com/pinkosyou_a
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
