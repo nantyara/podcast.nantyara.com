@@ -12,7 +12,7 @@ File.open(file_path) do |f|
   Mp3Info.open(f) do |mp3|
     title, album, artist =  mp3.tag.values_at('title', 'album', 'artist')
     length = mp3.length
-    desc = mp3.tag2.fetch('TT3')
+    desc = mp3.tag2.fetch('TIT3')
     num = filename.basename('.mp3')
 
     File.open("./_posts/#{publish_date}-#{num}.md", 'w') do |output_file|
