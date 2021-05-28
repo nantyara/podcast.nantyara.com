@@ -47,6 +47,10 @@ actors:
     image_url: /images/actors/mandokoro.jpg
     name: 高野政所
     url: https://twitter.com/mandokoro
+  nununu14sai:
+    image_url: /images/actors/nununu14sai.jpg
+    name: "null"
+    url: https://twitter.com/nununu14sai
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
