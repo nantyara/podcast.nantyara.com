@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第233回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第234回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第233回「ゲームおもろい再録」" \
+       -metadata title="第234回「あっちいのでこまめに水分補給しようの会」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="７分半くらいね〜" \
-       ~/Desktop/233.mp3
+       -metadata TIT3="こまめってなんだか知ってますか？" \
+       ~/Desktop/234.mp3
