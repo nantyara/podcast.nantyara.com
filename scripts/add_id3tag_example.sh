@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第246回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第247回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第246回「また虫と怖い話してます」" \
+       -metadata title="第247回「福岡行ってきた」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="解決策からお話しします" \
-       ~/Desktop/246.mp3
+       -metadata TIT3="話したいことがたくさんある" \
+       ~/Desktop/247.mp3
