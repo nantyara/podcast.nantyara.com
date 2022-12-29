@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第259回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第260回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第259回「Life goes on全曲レビュー」" \
+       -metadata title="第260回「2022が終わるってマジ？」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="聞（聴）いてくださいよ皆さん" \
-       ~/Desktop/259.mp3
+       -metadata TIT3="散弾銃とか" \
+       ~/Desktop/260.mp3
