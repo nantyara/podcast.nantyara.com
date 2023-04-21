@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第275回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第276回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第275回「薬局としての日高屋」" \
+       -metadata title="第276回「MV撮影したよ！！！」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="チェーン店ってどうですか？" \
-       ~/Desktop/275.mp3
+       -metadata TIT3="いちばん理想的なクラウドファンディングとは" \
+       ~/Desktop/276.mp3
