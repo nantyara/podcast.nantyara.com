@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第331回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第332回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第331回「楽屋の落し物」" \
+       -metadata title="第332回「記憶に結びついてる曲の話」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="不思議だな〜" \
-        ~/Desktop/331.mp3
+       -metadata TIT3="直せない癖みたいなのがあって" \
+        ~/Desktop/332.mp3
