@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第335回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第336回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第335回「なんもない」" \
+       -metadata title="第336回「なにもかもわからなくなっちゃった」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="な〜んもない、えっ、な〜んもない" \
-        ~/Desktop/335.mp3
+       -metadata TIT3="自分の名前とあおはるの誕生日くらいしか覚えてないですね" \
+        ~/Desktop/336.mp3
