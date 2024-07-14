@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第340回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第341回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第340回「ハバナイスライフ」" \
+       -metadata title="第341回「はにゃほれひれはら」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="間違えました" \
-        ~/Desktop/340.mp3
+       -metadata TIT3="夏の暑さってこんなだったかぁ" \
+        ~/Desktop/341.mp3
