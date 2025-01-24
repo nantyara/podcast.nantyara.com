@@ -51,6 +51,10 @@ actors:
     image_url: /images/actors/nununu14sai.jpg
     name: "null"
     url: https://twitter.com/nununu14sai
+  rukatama:
+    image_url: /images/actors/rukatama.jpg
+    name: "ルカタマ"
+    url: https://x.com/rukatamaki
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
