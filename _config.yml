@@ -55,6 +55,14 @@ actors:
     image_url: /images/actors/rukatama.jpg
     name: "ルカタマ"
     url: https://x.com/rukatamaki
+  katahaba:
+    image_url: /images/actors/katahaba.jpg
+    name: 肩幅ヒロシ
+    url: https://x.com/nandakonokata
+  azusa:
+    image_url: /images/actors/azusa.jpg
+    name: 六條アズサ
+    url: https://x.com/azusa_blog
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
