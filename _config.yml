@@ -63,6 +63,10 @@ actors:
     image_url: /images/actors/azusa.jpg
     name: 六條アズサ
     url: https://x.com/azusa_blog
+  okaeri:
+    image_url: /images/actors/okaeri.jpg
+    name: オカエリ
+    url: https://x.com/ni_n_p_
   nattyan:
     image_url: /images/actors/nattyan.jpg
     name: なっチャンホンポ
