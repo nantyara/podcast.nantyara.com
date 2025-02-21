@@ -63,6 +63,18 @@ actors:
     image_url: /images/actors/azusa.jpg
     name: 六條アズサ
     url: https://x.com/azusa_blog
+  nattyan:
+    image_url: /images/actors/nattyan.jpg
+    name: なっチャンホンポ
+    url: https://x.com/NN0872
+  mashiro:
+    image_url: /images/actors/mashiro.jpg
+    name: 真白ゆう
+    url: https://x.com/blanche0u0
+  hiyori:
+    image_url: /images/actors/hiyori.jpg
+    name: スナックひより
+    url: https://x.com/snackhiyori
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
