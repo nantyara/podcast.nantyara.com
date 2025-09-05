@@ -79,6 +79,10 @@ actors:
     image_url: /images/actors/hiyori.jpg
     name: スナックひより
     url: https://x.com/snackhiyori
+  yancya:
+    image_url: /images/actors/yancya.jpg
+    name: やんちゃ
+    url: https://x.com/yancya
 author: なんちゃらアイドル
 description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
