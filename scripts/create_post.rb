@@ -22,7 +22,7 @@ File.open(file_path) do |f|
         actor_ids:
           - mami
           - aoharu
-        audio_file_path: https://storage.googleapis.com/files.nantyara.com/#{filename}
+        audio_file_path: https://files.nantyara.com/#{filename}
         audio_file_size: #{f.size}
         date: #{publish_datetime}
         description: #{desc}
