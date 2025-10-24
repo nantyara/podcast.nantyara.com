@@ -41,6 +41,11 @@
                   <a href="{{ site.spotify_podcast_url }}" target="_blank">Spotifyで購読</a>
               </li>
               {% endif %}
+              {% if site.listen_podcast_url %}
+              <li>
+                  <a href="{{ site.listen_podcast_url }}" target="_blank">LISTENで購読</a>
+              </li>
+              {% endif %}
             <li>
               <a href="https://subscribeonandroid.com/{{ site.og_url | remove: "https://" | remove: "http://" }}/feed.xml" target="_blank">Androidで購読</a>
             </li>
