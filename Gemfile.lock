@@ -80,10 +80,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  csv
   jekyll (~> 4.3)
   mp3info
   webrick
 
 BUNDLED WITH
-   4.0.4
+  4.0.4
