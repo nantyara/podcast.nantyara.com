@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .list-group-element {
   color: $color-text-dark-primary;
   display: block;

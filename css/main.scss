@@ -2,20 +2,18 @@
 ---
 
 // Fixed order
-@import "blocks/reset";
-@import "_mixins";
-@import "_variables";
+@use "blocks/reset" as *;
 
 // ABC order
-@import "blocks/actor";
-@import "blocks/article";
-@import "blocks/base";
-@import "blocks/card";
-@import "blocks/container";
-@import "blocks/footer";
-@import "blocks/header";
-@import "blocks/list-group";
-@import "blocks/main";
-@import "blocks/markdown";
-@import "blocks/responsive";
-@import "blocks/utilities";
+@use "blocks/actor" as *;
+@use "blocks/article" as *;
+@use "blocks/base" as *;
+@use "blocks/card" as *;
+@use "blocks/container" as *;
+@use "blocks/footer" as *;
+@use "blocks/header" as *;
+@use "blocks/list-group" as *;
+@use "blocks/main" as *;
+@use "blocks/markdown" as *;
+@use "blocks/responsive" as *;
+@use "blocks/utilities" as *;
