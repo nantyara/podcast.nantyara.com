@@ -2,3 +2,5 @@
 /.sass-cache
 /vendor
 /.claude
+/transcripts/tmp
+/transcripts/progress.log
