@@ -1,0 +1,29 @@
+#!/bin/bash
+# _posts/YYYY-MM-DD-<id>.md をコミットするとき、transcripts/<id>.txt が
+# 無ければ whisper で生成して同じコミットに含める。
+# 生成失敗（音声が files.nantyara.com に未アップロード等）は警告のみで
+# コミット自体は通す。あとで transcripts/transcribe-episode.sh <id> を再実行すればよい。
+# 有効化: git config core.hooksPath .githooks
+
+set -u
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+ids="$(git diff --cached --name-only --diff-filter=AM -- '_posts/' |
+       sed -nE 's|^_posts/[0-9]{4}-[0-9]{2}-[0-9]{2}-((sp)?[0-9]+)\.md$|\1|p')"
+
+[[ -z "$ids" ]] && exit 0
+
+for id in $ids; do
+    txt="$ROOT/transcripts/$id.txt"
+    [[ -s "$txt" ]] && continue
+    echo "pre-commit: Ep.$id の transcript を生成中（whisper 実行、数分かかる場合あり）..." >&2
+    if bash "$ROOT/transcripts/transcribe-episode.sh" "$id"; then
+        git add "$txt"
+        echo "pre-commit: transcripts/$id.txt を生成してこのコミットに追加しました" >&2
+    else
+        echo "pre-commit: [WARNING] Ep.$id の transcript 生成に失敗（音声未アップロード？）。コミットは続行します。あとで bash transcripts/transcribe-episode.sh $id を実行してください" >&2
+    fi
+done
+
+exit 0
