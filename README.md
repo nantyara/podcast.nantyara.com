@@ -10,7 +10,8 @@ http://podcast.nantyara.com
 
 # post 自動生成
 
-* `ruby scripts/create_post.rb ~/Music/なんちゃラジオ/up/001.mp3 2018-09-28`
+* `bundle exec ruby scripts/create_post.rb ~/Music/なんちゃラジオ/up/001.mp3 2018-09-28`
+  * post 生成後、その mp3 を自動で R2 にアップロードする（`sync.sh <file>` 相当）
 
 # 文字起こし (transcripts/)
 

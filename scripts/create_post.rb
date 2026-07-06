@@ -41,3 +41,11 @@ File.open(file_path) do |f|
     end
   end
 end
+
+# 生成した post が参照する mp3 を files.nantyara.com (R2) にアップロードする
+# pre-commit hook の文字起こしが配信 URL から音声を取るので、コミット前に上がっている必要がある
+sync_sh = File.expand_path('../sync.sh', __dir__)
+unless system(sync_sh, file_path)
+  warn "#{filename} のアップロードに失敗。あとで ./sync.sh を実行すること"
+  exit 1
+end
