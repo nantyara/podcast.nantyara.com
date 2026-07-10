@@ -20,7 +20,7 @@
     </itunes:owner>
     <itunes:image href="{{ site.og_url }}/images/artwork.jpg" />
     <itunes:category text="Music"/>
-    <itunes:explicit>no</itunes:explicit>
+    <itunes:explicit>false</itunes:explicit>
     {% for post in site.posts %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
@@ -31,8 +31,8 @@
         <enclosure url="{{ post.audio_file_path }}" length="{{ post.audio_file_size }}" type="audio/mp3"/>
         <itunes:author>{{ site.author }}</itunes:author>
         <itunes:subtitle>{{ post.description }}</itunes:subtitle>
-        <itunes:duration>{{ post.duration }}</itunes:duration>
-        <itunes:explicit>no</itunes:explicit>
+        <itunes:duration>{{ post.duration | round }}</itunes:duration>
+        <itunes:explicit>false</itunes:explicit>
         <podcast:transcript url="{{ site.og_url }}/transcripts/{{ post.audio_file_path | split: '/' | last | replace: '.mp3', '.txt' }}" type="text/plain" language="ja" />
         <media:thumbnail url="{{ site.og_url }}/images/artwork.jpg"/>
       </item>
