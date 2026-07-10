@@ -88,8 +88,6 @@ description: なんちゃらアイドルのポッドキャスト
 description_long: なんちゃらアイドルのポッドキャスト。毎週金曜日 22:55 に更新
 email: nantyara@upec.jp
 exclude:
-  - docker
-  - docker-compose.yml
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt

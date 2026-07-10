@@ -1,6 +1,6 @@
 # なんちゃラジオ
 
-http://podcast.nantyara.com
+https://podcast.nantyara.com
 
 # mp3 アップロード (files.nantyara.com = Cloudflare R2)
 
