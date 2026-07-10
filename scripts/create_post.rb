@@ -8,6 +8,14 @@ file_path, publish_date = ARGV
 filename = Pathname.new(file_path).basename
 publish_datetime = Time.parse("#{publish_date} 22:55:00 JST").rfc2822
 
+ACTOR_CHOICES = {
+  '1' => ['mami'],
+  '2' => ['aoharu'],
+  '3' => %w[mami aoharu],
+}
+print "この回はどっちの？ [1] mami  [2] aoharu  [3] 両方: "
+actor_ids = ACTOR_CHOICES.fetch($stdin.gets.to_s.strip) { |k| abort "不正な入力: #{k.inspect}" }
+
 File.open(file_path) do |f|
   Mp3Info.open(f) do |mp3|
     title, album, artist =  mp3.tag.values_at('title', 'album', 'artist')
@@ -20,8 +28,7 @@ File.open(file_path) do |f|
         ---
         id: #{num}
         actor_ids:
-          - mami
-          - aoharu
+        #{actor_ids.map { |a| "  - #{a}" }.join("\n")}
         audio_file_path: https://files.nantyara.com/#{filename}
         audio_file_size: #{f.size}
         date: #{publish_datetime}
