@@ -6,5 +6,5 @@
 #         ./sync.sh <file>   → 指定ファイルだけ転送
 set -euo pipefail
 eval "$(cat ~/.secrets/rclone-r2-nantyara.env)"
-exec rclone copy --ignore-existing --exclude .DS_Store -v \
+exec rclone copy --ignore-existing --exclude .DS_Store --s3-no-check-bucket -v \
   "${1:-$HOME/Music/なんちゃラジオ/up/}" r2:nantyara-files
