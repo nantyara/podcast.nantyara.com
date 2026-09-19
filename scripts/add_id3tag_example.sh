@@ -1,13 +1,13 @@
-ffmpeg -i ~/Desktop/なんちゃラジオ第453回.mp3 \
+ffmpeg -i ~/Desktop/なんちゃラジオ第454回.mp3 \
        -i $(pwd)/images/artwork.jpg \
        -map 0 \
        -map 1 \
        -c copy \
        -c:v:1 mjpeg \
        -id3v2_version 3 \
-       -metadata title="第453回「買ってよかったもの。美味しくなかったジュース。」" \
+       -metadata title="第454回「刑法223条、204条・205条」" \
        -metadata genre="Podcast" \
        -metadata artist="なんちゃらアイドル" \
        -metadata album="なんちゃラジオ" \
-       -metadata TIT3="あるよね人生って、いろいろ" \
-       ~/Desktop/453.mp3
+       -metadata TIT3="なんて愚かなんだろうって" \
+       ~/Desktop/454.mp3

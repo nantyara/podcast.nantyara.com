@@ -2,5 +2,7 @@
 /.sass-cache
 /vendor
 /.claude
+/.codex/
+/AGENTS.md
 /transcripts/tmp
 /transcripts/progress.log
