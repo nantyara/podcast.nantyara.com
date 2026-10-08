@@ -1,6 +1,6 @@
 #!/bin/bash
 # _posts/YYYY-MM-DD-<id>.md をコミットするとき、transcripts/<id>.txt が
-# 無ければ whisper で生成して同じコミットに含める。
+# 無ければ ElevenLabs Scribe で生成して同じコミットに含める。
 # 生成失敗（音声が files.nantyara.com に未アップロード等）は警告のみで
 # コミット自体は通す。あとで transcripts/transcribe-episode.sh <id> を再実行すればよい。
 # 有効化: git config core.hooksPath .githooks
@@ -17,7 +17,7 @@ ids="$(git diff --cached --name-only --diff-filter=AM -- '_posts/' |
 for id in $ids; do
     txt="$ROOT/transcripts/$id.txt"
     [[ -s "$txt" ]] && continue
-    echo "pre-commit: Ep.$id の transcript を生成中（whisper 実行、数分かかる場合あり）..." >&2
+    echo "pre-commit: Ep.$id の transcript を生成中（ElevenLabs Scribe、数十秒かかる場合あり）..." >&2
     if bash "$ROOT/transcripts/transcribe-episode.sh" "$id"; then
         git add "$txt"
         echo "pre-commit: transcripts/$id.txt を生成してこのコミットに追加しました" >&2

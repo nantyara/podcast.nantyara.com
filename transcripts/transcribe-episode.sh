@@ -1,40 +1,33 @@
 #!/bin/bash
-# 1エピソード分の文字起こし: 音声DL → 16kHz wav 変換 → whisper-cli → txt
+# 1エピソード分の文字起こし: 音声DL → ElevenLabs Scribe v2 → txt
 # 使い方: bash transcribe-episode.sh <episode-id>   (例: 443, sp014)
 # transcripts/<id>.txt が既にあれば何もせず正常終了（レジューム可能）
+# 要 ELEVENLABS_API_KEY（環境変数）
 
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TMP_DIR="$SCRIPT_DIR/tmp"
-MODEL="$HOME/sandbox/recording_textup/models/ggml-large-v3-turbo-q5_0.bin"
 LOG="$SCRIPT_DIR/progress.log"
 
 id="${1:?usage: transcribe-episode.sh <episode-id>}"
-out="$SCRIPT_DIR/$id"
+out="$SCRIPT_DIR/$id.txt"
 
-[[ -s "$out.txt" ]] && exit 0
+[[ -s "$out" ]] && exit 0
 
 mkdir -p "$TMP_DIR"
 mp3="$TMP_DIR/$id.mp3"
-wav="$TMP_DIR/$id.wav"
 
 if ! curl -sf -o "$mp3" "https://files.nantyara.com/$id.mp3"; then
     echo "$(date +%H:%M:%S) $id DOWNLOAD_FAILED" >> "$LOG"
     exit 1
 fi
 
-if ! ffmpeg -y -loglevel error -i "$mp3" -ar 16000 -ac 1 "$wav"; then
-    echo "$(date +%H:%M:%S) $id FFMPEG_FAILED" >> "$LOG"
-    rm -f "$mp3"
-    exit 1
-fi
-
-if whisper-cli -m "$MODEL" -l ja -f "$wav" -otxt -of "$out" -np > /dev/null 2>&1 && [[ -s "$out.txt" ]]; then
+if ruby "$SCRIPT_DIR/../scripts/eleven_transcribe.rb" "$mp3" "$out" && [[ -s "$out" ]]; then
     echo "$(date +%H:%M:%S) $id OK" >> "$LOG"
-    rm -f "$mp3" "$wav"
+    rm -f "$mp3"
 else
-    echo "$(date +%H:%M:%S) $id WHISPER_FAILED" >> "$LOG"
-    rm -f "$out.txt" "$mp3" "$wav"
+    echo "$(date +%H:%M:%S) $id ELEVENLABS_FAILED" >> "$LOG"
+    rm -f "$mp3"
     exit 1
 fi

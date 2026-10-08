@@ -15,8 +15,9 @@ https://podcast.nantyara.com
 
 # 文字起こし (transcripts/)
 
-* `_posts/YYYY-MM-DD-<id>.md` をコミットすると pre-commit hook が `transcripts/<id>.txt` を whisper で自動生成して同じコミットに含める
+* `_posts/YYYY-MM-DD-<id>.md` をコミットすると pre-commit hook が `transcripts/<id>.txt` を ElevenLabs Scribe v2 で自動生成して同じコミットに含める（2026-10-09 に whisper から移行。whisper は繰り返し幻覚が多かったため）
   * hook の有効化（clone 後に1回）: `git config core.hooksPath .githooks`
   * 音声が files.nantyara.com に未アップロード等で生成に失敗した場合は警告のみでコミットは通る。あとで `bash transcripts/transcribe-episode.sh <id>` を実行する
 * 全エピソード一括: `bash transcripts/transcribe-all.sh [並列数]`（生成済みはスキップ）
-* 要 `whisper-cli` / `ffmpeg` とモデル `~/sandbox/recording_textup/models/ggml-large-v3-turbo-q5_0.bin`
+* 要 環境変数 `ELEVENLABS_API_KEY`。本体は `scripts/eleven_transcribe.rb`（テスト: `ruby spec/scripts/eleven_transcribe_spec.rb`）
+* 2026-10-09 以前の transcript は whisper 生成。作り直すなら該当 txt を消して `transcribe-episode.sh` を再実行（1本 ≒ 350 クレジット）
