@@ -20,4 +20,5 @@ https://podcast.nantyara.com
   * 音声が files.nantyara.com に未アップロード等で生成に失敗した場合は警告のみでコミットは通る。あとで `bash transcripts/transcribe-episode.sh <id>` を実行する
 * 全エピソード一括: `bash transcripts/transcribe-all.sh [並列数]`（生成済みはスキップ）
 * 要 環境変数 `ELEVENLABS_API_KEY`。本体は `scripts/eleven_transcribe.rb`（テスト: `ruby spec/scripts/eleven_transcribe_spec.rb`）
+* 固有名詞の辞書は `transcripts/terms.yml`。`keyterms` は API に渡して聞き取りを寄せる語、`replace` は書き起こし後の表記置換（keyterms を渡しても結果は毎回ブレるので、よく出る誤変換は replace で拾う）
 * 2026-10-09 以前の transcript は whisper 生成。作り直すなら該当 txt を消して `transcribe-episode.sh` を再実行（1本 ≒ 350 クレジット）
