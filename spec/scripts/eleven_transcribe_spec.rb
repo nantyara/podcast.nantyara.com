@@ -87,6 +87,33 @@ describe ElevenTranscribe do
     _(terms[:keyterms]).must_include 'Ｑ太郎'
   end
 
+  describe '.remaining_credits' do
+    it 'returns limit minus used from the subscription endpoint' do
+      body = { 'character_limit' => 100_000, 'character_count' => 64_000 }.to_json
+      http = FakeSTTHTTP.new(FakeSTTResponse.new('200', body))
+      _(ElevenTranscribe.remaining_credits(api_key: 'k', http: http)).must_equal 36_000
+      _(http.requests.first.path).must_equal '/v1/user/subscription'
+      _(http.requests.first['xi-api-key']).must_equal 'k'
+    end
+
+    it 'raises when the subscription endpoint fails' do
+      http = FakeSTTHTTP.new(FakeSTTResponse.new('401', 'nope'))
+      _ { ElevenTranscribe.remaining_credits(api_key: 'k', http: http) }.must_raise ElevenTranscribe::Error
+    end
+  end
+
+  describe '.ensure_reserve!' do
+    it 'passes when remaining is at or above the reserve' do
+      ElevenTranscribe.ensure_reserve!(remaining: 30_000, reserve: 30_000)
+    end
+
+    it 'raises when remaining is below the reserve' do
+      err = _ { ElevenTranscribe.ensure_reserve!(remaining: 29_999, reserve: 30_000) }
+        .must_raise ElevenTranscribe::ReserveError
+      _(err.message).must_include '29999'
+    end
+  end
+
   describe '.transcribe' do
     let(:mp3) do
       path = File.join(Dir.mktmpdir, '453.mp3')

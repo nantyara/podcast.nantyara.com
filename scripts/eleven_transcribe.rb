@@ -5,14 +5,33 @@ require 'yaml'
 # ElevenLabs Scribe v2 で mp3 を文字起こしし、whisper-cli -otxt 互換（1発話1行）の txt を書く
 module ElevenTranscribe
   class Error < StandardError; end
+  class ReserveError < Error; end
 
   STT_URI = URI('https://api.elevenlabs.io/v1/speech-to-text')
+  SUBSCRIPTION_URI = URI('https://api.elevenlabs.io/v1/user/subscription')
+  DEFAULT_RESERVE_CREDITS = 30_000
   MODEL = 'scribe_v2'
   RETRIES = 3
   TERMS_PATH = File.expand_path('../transcripts/terms.yml', __dir__)
   SENTENCE_END = /[。？！?!]\z/
 
   module_function
+
+  def remaining_credits(api_key:, http: Net::HTTP)
+    req = Net::HTTP::Get.new(SUBSCRIPTION_URI, 'xi-api-key' => api_key)
+    res = http.start(SUBSCRIPTION_URI.host, SUBSCRIPTION_URI.port, use_ssl: true) { _1.request(req) }
+    raise Error, "ElevenLabs subscription #{res.code}: #{res.body.to_s[0, 300]}" unless res.is_a?(Net::HTTPSuccess)
+
+    sub = JSON.parse(res.body)
+    sub.fetch('character_limit') - sub.fetch('character_count')
+  end
+
+  # 1本の消費（数百クレジット）は事前に測らない。下限を割り込むのは最大でも1本分
+  def ensure_reserve!(remaining:, reserve:)
+    return if remaining >= reserve
+
+    raise ReserveError, "残りクレジット #{remaining} が下限 #{reserve} を下回っているので文字起こしを中止"
+  end
 
   def load_terms(path)
     data = YAML.safe_load_file(path) || {}
@@ -81,6 +100,13 @@ if $PROGRAM_NAME == __FILE__
   mp3_path, out_path = ARGV
   abort 'usage: ruby scripts/eleven_transcribe.rb <in.mp3> <out.txt>' unless mp3_path && out_path
   api_key = ENV['ELEVENLABS_API_KEY'] or abort 'ELEVENLABS_API_KEY が未設定'
+
+  reserve = Integer(ENV.fetch('RESERVE_CREDITS', ElevenTranscribe::DEFAULT_RESERVE_CREDITS))
+  begin
+    ElevenTranscribe.ensure_reserve!(remaining: ElevenTranscribe.remaining_credits(api_key: api_key), reserve: reserve)
+  rescue ElevenTranscribe::Error => e
+    abort e.message
+  end
 
   terms = ElevenTranscribe.load_terms(ElevenTranscribe::TERMS_PATH)
   body = ElevenTranscribe.transcribe(mp3_path, api_key: api_key, keyterms: terms[:keyterms])
