@@ -6,6 +6,7 @@ https://podcast.nantyara.com
 
 * `./sync.sh` — `~/Music/なんちゃラジオ/up/` の未アップロード分を R2 バケット `nantyara-files` に `rclone copy --ignore-existing` する
   * 認証は `~/.secrets/rclone-r2-nantyara.env`（nantyara サーバの `~/.config/rclone-r2.env` と同内容）
+  * `./sync.sh -f <file>` で R2 に既にあるファイルも上書きする（ID3 タグを直した mp3 の再アップ等。中身が同じならスキップされる）
   * 2026-07-06 に配信が nantyara サーバ (nginx) から Cloudflare R2 カスタムドメインに移行。旧 `rsync.sh` は廃止
 
 # post 自動生成
